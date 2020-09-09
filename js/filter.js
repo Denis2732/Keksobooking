@@ -1,22 +1,19 @@
 //В работе...
 
-var a = document.querySelector('#housing-type');
+let filter = document.querySelector('#housing-type');
 
-function filterType(data){
-        var e = a.value;
-        if(e === 'any'){
-          console.log(0);
-        }
-        if(e === 'flat'){
-         console.log(1);
-        }
-        if(e === 'house'){
-          console.log(2);
-        }
-        if(e === 'bungalo'){
-          console.log(3);
-        }
-      } 
 
- a.addEventListener('change', filterType);
- 
+filter.addEventListener('change', () => {
+  let filterClass = filter.value;
+  let filterBox = document.querySelectorAll('.map__rendering-pins');
+
+  filterBox.forEach(elem => {
+    elem.classList.remove('hidden');
+
+    if (elem.value != filterClass && filterClass !== 'any') {
+      elem.classList.add('hidden');
+    }
+  })
+});
+
+
